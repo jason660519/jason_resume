@@ -1023,3 +1023,9 @@ section {
     max-width: 100%;
   }
 }
+
+.social-links svg {
+  width: 24px; /* Example size */
+  height: 24px; /* Example size */
+  fill: currentColor; /* This makes the SVG inherit the text color */
+}
