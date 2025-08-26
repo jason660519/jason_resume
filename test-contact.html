@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input, textarea { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
+        button { background: #149ddd; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #37b3ed; }
+        .result { margin-top: 20px; padding: 10px; border-radius: 4px; }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+    </style>
+</head>
+<body>
+    <h1>联系表单测试</h1>
+    <p>这是一个简单的测试页面，用于验证PHP联系表单功能。</p>
+    
+    <form action="forms/contact.php" method="post">
+        <div class="form-group">
+            <label for="name">姓名:</label>
+            <input type="text" name="name" id="name" value="测试用户" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">邮箱:</label>
+            <input type="email" name="email" id="email" value="test@example.com" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="subject">主题:</label>
+            <input type="text" name="subject" id="subject" value="测试邮件" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="message">消息:</label>
+            <textarea name="message" id="message" rows="5" required>这是一条测试消息，用于验证联系表单是否正常工作。</textarea>
+        </div>
+        
+        <button type="submit">发送测试邮件</button>
+    </form>
+    
+    <div style="margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 4px;">
+        <h3>测试说明:</h3>
+        <ul>
+            <li>这个表单会调用 forms/contact.php 处理邮件发送</li>
+            <li>邮件将发送到: a0405142777@gmail.com</li>
+            <li>需要服务器支持PHP mail()函数或SMTP配置</li>
+            <li>如果显示错误，可能需要配置服务器邮件设置</li>
+        </ul>
+    </div>
+</body>
+</html>

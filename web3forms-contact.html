@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web3Forms 聯絡表單測試</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        .submit-btn {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        }
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .status-message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        .debug-info {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        .feature-list {
+            background-color: #e8f5e8;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .feature-list h3 {
+            color: #2e7d32;
+            margin-top: 0;
+        }
+        .feature-list ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .feature-list li {
+            margin-bottom: 5px;
+            color: #1b5e20;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🆓 Web3Forms 免費聯絡表單</h1>
+            <p>完全免費的表單處理服務，無需註冊即可使用！</p>
+        </div>
+
+        <div class="feature-list">
+            <h3>✨ Web3Forms 優勢：</h3>
+            <ul>
+                <li>✅ 完全免費，無隱藏費用</li>
+                <li>✅ 無需註冊或API密鑰</li>
+                <li>✅ 每月1000封郵件免費額度</li>
+                <li>✅ 支援文件上傳</li>
+                <li>✅ 垃圾郵件防護</li>
+                <li>✅ 自動回覆功能</li>
+                <li>✅ 即時郵件通知</li>
+            </ul>
+        </div>
+
+        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+            <!-- Web3Forms Access Key - 這是公開的測試密鑰 -->
+            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+            
+            <!-- 可選：設置收件人郵箱 -->
+            <input type="hidden" name="to" value="a04045142777@gmail.com">
+            
+            <!-- 可選：設置郵件主題前綴 -->
+            <input type="hidden" name="subject" value="來自作品集網站的新聯絡">
+            
+            <!-- 可選：成功後重定向頁面 -->
+            <input type="hidden" name="redirect" value="https://web3forms.com/success">
+            
+            <!-- 蜜罐字段防止垃圾郵件 -->
+            <input type="checkbox" name="botcheck" id="" style="display: none;">
+
+            <div class="form-group">
+                <label for="name">👤 姓名 *</label>
+                <input type="text" id="name" name="name" required placeholder="請輸入您的姓名">
+            </div>
+
+            <div class="form-group">
+                <label for="email">📧 電子郵箱 *</label>
+                <input type="email" id="email" name="email" required placeholder="請輸入您的電子郵箱">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">📱 電話號碼</label>
+                <input type="tel" id="phone" name="phone" placeholder="請輸入您的電話號碼（選填）">
+            </div>
+
+            <div class="form-group">
+                <label for="subject">📋 主題 *</label>
+                <input type="text" id="subject" name="message_subject" required placeholder="請輸入郵件主題">
+            </div>
+
+            <div class="form-group">
+                <label for="message">💬 訊息內容 *</label>
+                <textarea id="message" name="message" required placeholder="請輸入您的訊息內容..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">
+                📤 發送訊息
+            </button>
+        </form>
+
+        <div id="statusMessage" class="status-message" style="display: none;"></div>
+        
+        <div id="debugInfo" class="debug-info" style="display: none;">
+            <h4>🔍 調試信息：</h4>
+            <div id="debugContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // 表單提交處理函數
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const submitBtn = document.getElementById('submitBtn');
+            const statusMessage = document.getElementById('statusMessage');
+            const debugInfo = document.getElementById('debugInfo');
+            const debugContent = document.getElementById('debugContent');
+            
+            // 顯示發送中狀態
+            submitBtn.disabled = true;
+            submitBtn.textContent = '📤 發送中...';
+            statusMessage.style.display = 'block';
+            statusMessage.className = 'status-message info';
+            statusMessage.textContent = '正在發送您的訊息，請稍候...';
+            
+            // 收集表單數據
+            const formData = new FormData(form);
+            
+            // 顯示調試信息
+            debugInfo.style.display = 'block';
+            debugContent.innerHTML = `
+                <p><strong>發送時間:</strong> ${new Date().toLocaleString('zh-TW')}</p>
+                <p><strong>姓名:</strong> ${formData.get('name')}</p>
+                <p><strong>郵箱:</strong> ${formData.get('email')}</p>
+                <p><strong>電話:</strong> ${formData.get('phone') || '未提供'}</p>
+                <p><strong>主題:</strong> ${formData.get('message_subject')}</p>
+                <p><strong>訊息:</strong> ${formData.get('message').substring(0, 100)}${formData.get('message').length > 100 ? '...' : ''}</p>
+                <p><strong>狀態:</strong> 正在發送...</p>
+            `;
+            
+            // 發送表單數據
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                console.log('Response status:', response.status);
+                console.log('Response headers:', response.headers);
+                return response.json();
+            })
+            .then(data => {
+                console.log('Response data:', data);
+                
+                // 更新調試信息
+                debugContent.innerHTML += `
+                    <p><strong>響應狀態:</strong> ${data.success ? '成功' : '失敗'}</p>
+                    <p><strong>響應訊息:</strong> ${data.message || '無訊息'}</p>
+                    <p><strong>完整響應:</strong> ${JSON.stringify(data, null, 2)}</p>
+                `;
+                
+                if (data.success) {
+                    // 成功
+                    statusMessage.className = 'status-message success';
+                    statusMessage.textContent = '✅ 訊息發送成功！我們會盡快回覆您。';
+                    form.reset(); // 清空表單
+                } else {
+                    // 失敗
+                    statusMessage.className = 'status-message error';
+                    statusMessage.textContent = `❌ 發送失敗：${data.message || '未知錯誤'}`;
+                }
+            })
+            .catch(error => {
+                console.error('發送錯誤:', error);
+                
+                // 更新調試信息
+                debugContent.innerHTML += `
+                    <p><strong>錯誤類型:</strong> ${error.name}</p>
+                    <p><strong>錯誤訊息:</strong> ${error.message}</p>
+                    <p><strong>完整錯誤:</strong> ${JSON.stringify(error, null, 2)}</p>
+                `;
+                
+                statusMessage.className = 'status-message error';
+                statusMessage.textContent = `❌ 發送失敗：${error.message}`;
+            })
+            .finally(() => {
+                // 恢復按鈕狀態
+                submitBtn.disabled = false;
+                submitBtn.textContent = '📤 發送訊息';
+            });
+        }
+        
+        // 綁定表單提交事件
+        document.getElementById('contactForm').addEventListener('submit', handleFormSubmit);
+        
+        // 頁面載入完成後的初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Web3Forms 聯絡表單已載入');
+            
+            // 檢查是否需要設置Access Key
+            const accessKeyInput = document.querySelector('input[name="access_key"]');
+            if (accessKeyInput.value === 'YOUR_ACCESS_KEY_HERE') {
+                const debugInfo = document.getElementById('debugInfo');
+                const debugContent = document.getElementById('debugContent');
+                
+                debugInfo.style.display = 'block';
+                debugContent.innerHTML = `
+                    <p style="color: #d32f2f;"><strong>⚠️ 注意：</strong></p>
+                    <p>需要設置 Web3Forms Access Key 才能正常使用。</p>
+                    <p><strong>設置步驟：</strong></p>
+                    <ol>
+                        <li>訪問 <a href="https://web3forms.com" target="_blank">https://web3forms.com</a></li>
+                        <li>輸入您的郵箱地址獲取免費 Access Key</li>
+                        <li>將 Access Key 替換到表單中的 "YOUR_ACCESS_KEY_HERE"</li>
+                    </ol>
+                    <p><strong>當前狀態：</strong> 需要配置 Access Key</p>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

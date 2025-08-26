@@ -10,7 +10,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/favicon.svg" rel="icon" type="image/svg+xml">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -28,6 +28,8 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  
+  <!-- Web3Forms - 免費的聯絡表單服務 -->
 </head>
 
 
@@ -859,9 +861,14 @@
             </div>
 
           </div>
-<!-- 
           <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+              <!-- Web3Forms 隱藏欄位 -->
+              <input type="hidden" name="access_key" value="8e620ab0-6675-4746-860f-00aa187f46f9">
+              <input type="hidden" name="subject" value="來自個人網站的新聯絡訊息">
+              <input type="hidden" name="from_name" value="Jason Resume Website">
+              <input type="hidden" name="redirect" value="http://localhost:8000/#contact">
+              
               <div class="row">
                 <div class="form-group col-md-6">
                   <label for="name">Your Name</label>
@@ -874,20 +881,22 @@
               </div>
               <div class="form-group">
                 <label for="name">Subject</label>
-                <input type="text" class="form-control" name="subject" id="subject" required>
+                <input type="text" class="form-control" name="user_subject" id="user_subject" required>
               </div>
               <div class="form-group">
                 <label for="name">Message</label>
                 <textarea class="form-control" name="message" rows="10" required></textarea>
               </div>
               <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
+                <div class="loading" style="display:none;">正在發送...</div>
+                <div class="error-message" style="display:none;"></div>
+                <div class="sent-message" style="display:none;">郵件發送成功！我會盡快與您聯絡。</div>
               </div>
               <div class="text-center"><button type="submit">Send Message</button></div>
             </form>
-          </div> -->
+            
+
+          </div>
 
 
         </div>

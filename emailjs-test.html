@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmailJS 測試頁面</title>
+    <!-- EmailJS CDN -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .message {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        .debug-info {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>EmailJS 測試頁面</h1>
+    <p>此頁面用於測試和診斷 EmailJS 配置問題</p>
+    
+    <form id="testForm">
+        <div class="form-group">
+            <label for="name">姓名:</label>
+            <input type="text" id="name" name="name" value="測試用戶" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">郵箱:</label>
+            <input type="email" id="email" name="email" value="test@example.com" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="subject">主題:</label>
+            <input type="text" id="subject" name="subject" value="測試郵件" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="message">訊息:</label>
+            <textarea id="message" name="message" rows="4" required>這是一封測試郵件，用於診斷 EmailJS 配置問題。</textarea>
+        </div>
+        
+        <button type="submit">發送測試郵件</button>
+    </form>
+    
+    <div id="messageDiv" class="message"></div>
+    
+    <div class="debug-info">
+        <h3>調試信息:</h3>
+        <div id="debugInfo"></div>
+    </div>
+
+    <script>
+        // EmailJS 初始化
+        (function() {
+            try {
+                emailjs.init("7NfWoD1pIP6Q15O7H");
+                addDebugInfo('✅ EmailJS 初始化成功');
+                addDebugInfo('📋 EmailJS 版本: ' + (emailjs.version || '未知'));
+            } catch (error) {
+                addDebugInfo('❌ EmailJS 初始化失敗: ' + error.message);
+            }
+        })();
+        
+        // 添加調試信息的函數
+        function addDebugInfo(message) {
+            const debugDiv = document.getElementById('debugInfo');
+            const p = document.createElement('p');
+            p.textContent = new Date().toLocaleTimeString() + ' - ' + message;
+            debugDiv.appendChild(p);
+            console.log(message);
+        }
+        
+        // 顯示消息的函數
+        function showMessage(text, type) {
+            const messageDiv = document.getElementById('messageDiv');
+            messageDiv.textContent = text;
+            messageDiv.className = 'message ' + type;
+            messageDiv.style.display = 'block';
+            
+            addDebugInfo('💬 顯示消息: ' + text + ' (類型: ' + type + ')');
+            
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 10000);
+        }
+        
+        // 表單提交處理
+        document.getElementById('testForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            addDebugInfo('🚀 開始發送郵件測試');
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // 驗證必填字段
+            if (!name || !email || !subject || !message) {
+                showMessage('請填寫所有必填欄位', 'error');
+                addDebugInfo('❌ 驗證失敗: 缺少必填欄位');
+                return;
+            }
+            
+            // 顯示發送中消息
+            showMessage('正在發送郵件...', 'info');
+            
+            // 準備發送參數
+            const templateParams = {
+                name: name,
+                email: email,
+                subject: subject,
+                message: message,
+                to_name: 'Jason',
+                sent_time: new Date().toLocaleString('zh-TW')
+            };
+            
+            addDebugInfo('📤 發送參數: ' + JSON.stringify(templateParams, null, 2));
+            addDebugInfo('🔧 服務ID: service_qzfg349');
+            addDebugInfo('📄 模板ID: template_1k6xwmd');
+            
+            // 發送郵件
+            emailjs.send('service_qzfg349', 'template_1k6xwmd', templateParams)
+                .then(function(response) {
+                    addDebugInfo('✅ 郵件發送成功!');
+                    addDebugInfo('📊 響應狀態: ' + response.status);
+                    addDebugInfo('📝 響應文本: ' + response.text);
+                    showMessage('郵件發送成功！', 'success');
+                })
+                .catch(function(error) {
+                    addDebugInfo('❌ 郵件發送失敗');
+                    addDebugInfo('🔍 完整錯誤對象: ' + JSON.stringify(error, null, 2));
+                    addDebugInfo('📊 錯誤狀態: ' + (error.status || '未知'));
+                    addDebugInfo('📝 錯誤文本: ' + (error.text || '未知'));
+                    addDebugInfo('🔍 錯誤原因: ' + (error.reason || '未知'));
+                    addDebugInfo('📡 錯誤響應: ' + (error.response || '無響應'));
+                    
+                    let errorMessage = '郵件發送失敗: ';
+                    if (error.status === 400) {
+                        errorMessage += '請求參數錯誤 (可能是模板配置問題)';
+                    } else if (error.status === 401) {
+                        errorMessage += '認證失敗 (請檢查公鑰)';
+                    } else if (error.status === 403) {
+                        errorMessage += '權限不足 (請檢查服務配置)';
+                    } else if (error.status === 404) {
+                        errorMessage += '服務或模板不存在';
+                    } else {
+                        errorMessage += '未知錯誤';
+                    }
+                    errorMessage += ' (錯誤代碼: ' + (error.status || '未知') + ')';
+                    
+                    showMessage(errorMessage, 'error');
+                });
+        });
+        
+        // 頁面加載完成後的檢查
+        window.addEventListener('load', function() {
+            addDebugInfo('🌐 頁面加載完成');
+            addDebugInfo('🔍 EmailJS 對象檢查: ' + (typeof emailjs !== 'undefined' ? '存在' : '不存在'));
+            
+            if (typeof emailjs !== 'undefined') {
+                addDebugInfo('📋 EmailJS 方法檢查:');
+                addDebugInfo('  - init: ' + (typeof emailjs.init === 'function' ? '✅' : '❌'));
+                addDebugInfo('  - send: ' + (typeof emailjs.send === 'function' ? '✅' : '❌'));
+            }
+        });
+    </script>
+</body>
+</html>
