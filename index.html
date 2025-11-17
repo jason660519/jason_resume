@@ -859,11 +859,10 @@
           </div>
           <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
             <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-              <!-- Web3Forms 隱藏欄位 -->
               <input type="hidden" name="access_key" value="8e620ab0-6675-4746-860f-00aa187f46f9">
               <input type="hidden" name="subject" value="來自個人網站的新聯絡訊息">
               <input type="hidden" name="from_name" value="Jason Resume Website">
-              <!-- Removed redirect to prevent page jumping -->
+              <input type="hidden" name="replyto" value="email">
               
               <div class="row">
                 <div class="form-group col-md-6">
@@ -934,7 +933,6 @@
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/purecounter/purecounter.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/typed.js/typed.min.js"></script>
@@ -993,9 +991,14 @@
             successDiv.style.display = 'none';
           }, 10000);
         } else {
-          // Show error message
           errorDiv.style.display = 'block';
-          errorDiv.textContent = 'Sending failed, please try again later or contact us directly: a0405142777@gmail.com';
+          errorDiv.textContent = (result.message || 'Sending failed, please try again later or contact us directly: a0405142777@gmail.com');
+          if (result.data) {
+            try {
+              const extra = Array.isArray(result.data) ? result.data.join(' | ') : JSON.stringify(result.data);
+              errorDiv.textContent += ` (${extra})`;
+            } catch (_) {}
+          }
         }
       } catch (error) {
         // Hide loading
@@ -1004,7 +1007,6 @@
         btnText.style.display = 'inline';
         btnLoading.style.display = 'none';
         
-        // Show error message
         errorDiv.style.display = 'block';
         errorDiv.textContent = 'Network error, please check your connection or contact us directly: a0405142777@gmail.com';
       }

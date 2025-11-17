@@ -526,6 +526,7 @@
               <input type="hidden" name="access_key" value="8e620ab0-6675-4746-860f-00aa187f46f9">
               <input type="hidden" name="subject" value="New contact message from personal website">
               <input type="hidden" name="from_name" value="Jason Resume Website">
+              <input type="hidden" name="replyto" value="email">
               <div class="row">
                 <div class="form-group col-md-6"><label for="name">Your Name</label><input type="text" name="name" class="form-control" id="name" required></div>
                 <div class="form-group col-md-6"><label for="email">Your Email</label><input type="email" class="form-control" name="email" id="email" required></div>
@@ -552,12 +553,61 @@
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/purecounter/purecounter.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/typed.js/typed.min.js"></script>
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="assets/js/main.js"></script>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const form = this;
+      const submitBtn = document.getElementById('submitBtn');
+      const btnText = submitBtn.querySelector('.btn-text');
+      const btnLoading = submitBtn.querySelector('.btn-loading');
+      const loadingDiv = document.querySelector('.loading');
+      const errorDiv = document.querySelector('.error-message');
+      const successDiv = document.querySelector('.sent-message');
+      loadingDiv.style.display = 'none';
+      errorDiv.style.display = 'none';
+      successDiv.style.display = 'none';
+      loadingDiv.style.display = 'block';
+      submitBtn.disabled = true;
+      btnText.style.display = 'none';
+      btnLoading.style.display = 'inline';
+      try {
+        const formData = new FormData(form);
+        const response = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
+        const result = await response.json();
+        loadingDiv.style.display = 'none';
+        submitBtn.disabled = false;
+        btnText.style.display = 'inline';
+        btnLoading.style.display = 'none';
+        if (result.success) {
+          successDiv.style.display = 'block';
+          form.reset();
+          setTimeout(() => { successDiv.style.display = 'none'; }, 10000);
+        } else {
+          errorDiv.style.display = 'block';
+          errorDiv.textContent = (result.message || 'Sending failed, please try again later or contact me directly: a0405142777@gmail.com');
+          if (result.data) {
+            try {
+              const extra = Array.isArray(result.data) ? result.data.join(' | ') : JSON.stringify(result.data);
+              errorDiv.textContent += ` (${extra})`;
+            } catch (_) {}
+          }
+        }
+      } catch (error) {
+        loadingDiv.style.display = 'none';
+        submitBtn.disabled = false;
+        btnText.style.display = 'inline';
+        btnLoading.style.display = 'none';
+        errorDiv.style.display = 'block';
+        errorDiv.textContent = 'Network error, please check your connection or contact me directly: a0405142777@gmail.com';
+      }
+    });
+  </script>
 
   <style>
     @keyframes spin {0% { transform: rotate(0deg);}100% { transform: rotate(360deg);} }
