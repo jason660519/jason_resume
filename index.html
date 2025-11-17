@@ -9,6 +9,9 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
+  <link rel="alternate" hreflang="en" href="index-en.html">
+  <link rel="alternate" hreflang="zh-Hant" href="index-zh.html">
+
   <!-- Favicons -->
   <link href="assets/img/favicon.svg" rel="icon" type="image/svg+xml">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -46,12 +49,12 @@
         <img src="assets/img/profile-img.jpg" alt="" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="index.html">Jason, Yifan</a></h1>
         <div class="social-links mt-3 text-center">
-          <a href="https://www.facebook.com/profile.php?id=1061788626" class="facebook"><i
+          <a href="https://www.facebook.com/profile.php?id=1061788626" target="_blank" class="facebook"><i
               class="bx bxl-facebook"></i></a>
-          <a href="https://linkedin.com/in/yifan-yu-3162902ab/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+          <a href="https://linkedin.com/in/yifan-yu-3162902ab/" target="_blank" class="linkedin"><i class="bx bxl-linkedin"></i></a>
 
           <!-- Insert LINE SVG here -->
-          <a href="https://line.me/ti/p/gdG9RvXupT" class="line">
+          <a href="https://line.me/ti/p/gdG9RvXupT" target="_blank" class="line">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-line"
               viewBox="0 0 16 16">
               <path
@@ -60,7 +63,7 @@
           </a>
 
           <!-- Insert WeChat SVG here -->
-          <a href="assets/img/My Wechat.jpg" class="wechat">
+          <a href="assets/img/My Wechat.jpg" class="wechat" target="_blank">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wechat"
               viewBox="0 0 16 16">
               <path
@@ -71,6 +74,11 @@
           </a>
 
         </div>
+
+        <div class="text-center mt-2" aria-label="Language">
+          <a href="index-en.html" class="btn btn-sm btn-outline-light mx-1">EN</a>
+          <a href="index-zh.html" class="btn btn-sm btn-outline-light mx-1">中</a>
+        </div>
       </div>
 
 
@@ -78,17 +86,17 @@
         <ul>
           <!-- 導覽連結改為相對路徑，避免本地預覽時跳轉到 GitHub Pages -->
           <li><a href="#hero" class="nav-link scrollto active"><i
-                class="bx bx-home"></i> <span>Home</span></a></li>
+                class="bx bx-home"></i> <span data-i18n="nav.home">Home</span></a></li>
           <li><a href="#about" class="nav-link scrollto"><i
-                class="bx bx-user"></i> <span>About</span></a></li>
+                class="bx bx-user"></i> <span data-i18n="nav.about">About</span></a></li>
           <li><a href="#resume" class="nav-link scrollto"><i
-                class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+                class="bx bx-file-blank"></i> <span data-i18n="nav.resume">Resume</span></a></li>
           <li><a href="#portfolio" class="nav-link scrollto"><i
-                class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+                class="bx bx-book-content"></i> <span data-i18n="nav.portfolio">Portfolio</span></a></li>
           <li><a href="#services" class="nav-link scrollto"><i
-                class="bx bx-server"></i> <span>Services</span></a></li>
+                class="bx bx-server"></i> <span data-i18n="nav.services">Services</span></a></li>
           <li><a href="#contact" class="nav-link scrollto"><i
-                class="bx bx-envelope"></i> <span>Contact</span></a></li>
+                class="bx bx-envelope"></i> <span data-i18n="nav.contact">Contact</span></a></li>
         </ul>
       </nav><!-- .nav-menu -->
     </div>
@@ -98,8 +106,7 @@
   <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
     <div class="hero-container" data-aos="fade-in">
       <h1 style="text-align:center">Yifan Yu</h1>
-      <p style="text-align:center">I'm <span class="typed"
-          data-typed-items="  GCP Architect, AI ML Specialist, Business Consultant "></span></p>
+      <p style="text-align:center"><span data-i18n="hero.im">I'm</span> <span class="typed" data-typed-items="GCP Architect, AI ML Specialist, Business Consultant"></span></p>
     </div>
   </section><!-- End Hero -->
 
@@ -110,7 +117,7 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>About</h2>
+          <h2 data-i18n="section.about.title">About</h2>
         </div>
 
         <div class="row">
@@ -118,7 +125,7 @@
             <img src="assets/img/profile-img.jpg" class="img-fluid" alt="">
           </div>
           <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-            <h3>GCP Architect &amp; AI ML Specialist</h3>
+            <h3 data-i18n="about.subtitle">GCP Architect &amp; AI ML Specialist</h3>
             <p class="fst-italic"><a href="assets/img/Google Cloud Certified Professional Cloud Architect.png" class="portfolio-lightbox">Google
                 Professional Cloud Architect & Business Consultant.</a></p>
             <div class="row">
@@ -172,8 +179,8 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>Mission Completed</h2>
-          <p>Customer satisfaction is my greatest achievement</p>
+          <h2 data-i18n="section.facts.title">Mission Completed</h2>
+          <p data-i18n="section.facts.desc">Customer satisfaction is my greatest achievement</p>
         </div>
 
         <div class="row no-gutters">
@@ -224,8 +231,8 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>Skills</h2>
-          <p>Proficient in SDD (Spec Driven Development) and TDD Design Pattern; Multi-cloud architecture, infrastructure automation, and advanced development.</p>
+          <h2 data-i18n="section.skills.title">Skills</h2>
+          <p data-i18n="section.skills.desc">Proficient in SDD (Spec Driven Development) and TDD Design Pattern; Multi-cloud architecture, infrastructure automation, and advanced development.</p>
         </div>
 
         <div class="row skills-content">
@@ -331,8 +338,8 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>Resume</h2>
-          <h3 class="resume-title">Professional Certification</h3>
+          <h2 data-i18n="section.resume.title">Resume</h2>
+          <h3 class="resume-title" data-i18n="resume.cert.title">Professional Certification</h3>
           <ul>
             <li><a href="assets/img/Google Cloud Certified Professional Cloud Architect.png" class="portfolio-lightbox">GCP
                 professional Architect Certificate No.88174</a></li>
@@ -359,7 +366,7 @@
 
         <div class="row">
           <div class="col-lg-6" data-aos="fade-up">
-            <h3 class="resume-title">Experience</h3>
+            <h3 class="resume-title" data-i18n="resume.exp.title">Experience</h3>
             <div class="resume-item">
               <h4>AI Freelancer</h4>
               <h5><span>2024 - 2025</span></h5>
@@ -426,7 +433,7 @@
             </div>
           </div>
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <h3 class="resume-title">Skills &amp; Achievements &amp; Responsibilities</h3>
+            <h3 class="resume-title" data-i18n="resume.sar.title">Skills &amp; Achievements &amp; Responsibilities</h3>
             <div class="resume-item">
 
               <h4>Skills:</h4>
@@ -499,18 +506,18 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>Portfolio</h2>
-          <p>Completed Projects</p>
+          <h2 data-i18n="section.portfolio.title">Portfolio</h2>
+          <p data-i18n="section.portfolio.desc">Completed Projects</p>
         </div>
 
         <div class="row" data-aos="fade-up">
           <div class="col-lg-12 d-flex justify-content-center">
             <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-web">Web Design</li>
-              <li data-filter=".filter-video">Product Video Design</li>
-              <li data-filter=".filter-drone">Surveying and Mapping</li>
-              <li data-filter=".filter-architect">Architect Design</li>
+              <li data-filter="*" class="filter-active" data-i18n="portfolio.filters.all">All</li>
+              <li data-filter=".filter-web" data-i18n="portfolio.filters.web">Web Design</li>
+              <li data-filter=".filter-video" data-i18n="portfolio.filters.video">Product Video Design</li>
+              <li data-filter=".filter-drone" data-i18n="portfolio.filters.drone">Surveying and Mapping</li>
+              <li data-filter=".filter-architect" data-i18n="portfolio.filters.architect">Architect Design</li>
             </ul>
           </div>
         </div>
@@ -659,14 +666,14 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>Services</h2>
-          <p>Specialize in custom web design to grow your business</p>
+          <h2 data-i18n="section.services.title">Services</h2>
+          <p data-i18n="section.services.desc">Specialize in custom web design to grow your business</p>
         </div>
 
         <div class="row">
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
             <div class="icon"><i class="bi bi-briefcase"> </i></div>
-            <h4 class="title"><a href="">Modern Web Design</a></h4>
+            <h4 class="title"><a href="" data-i18n="services.item1.title">Modern Web Design</a></h4>
             <p class="description">In today's digital marketplace, a stylish and functional website is indispensable.
               Our web design team specializes in crafting custom websites that power your online presence and drive
               growth. By creating a unique design tailored to your business, we ensure that your website not only stands
@@ -674,7 +681,7 @@
           </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
             <div class="icon"><i class="bi bi-card-checklist"></i></div>
-            <h4 class="title"><a href="">Marketing</a></h4>
+            <h4 class="title"><a href="" data-i18n="services.item2.title">Marketing</a></h4>
             <p class="description">Great results don’t happen by accident. Our marketing team works hard with our
               clients to drive business growth and build ongoing success. Our marketing team is here to equip you with
               the right tools to cut through the noise and maximise your returns. Regardless of which industry you’re
@@ -682,7 +689,7 @@
           </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
             <div class="icon"><i class="bi bi-bar-chart"></i></div>
-            <h4 class="title"><a href="">Business Consultanting & Data Analytics</a></h4>
+            <h4 class="title"><a href="" data-i18n="services.item3.title">Business Consultanting & Data Analytics</a></h4>
             <p class="description">Our approach starts with exploring how data analytics can be utilized to enhance your
               business performance, refine decision-making processes, and increase revenue streams. By aligning
               cutting-edge data analytics with your business strategy, we provide insights that drive sustainable growth
@@ -690,7 +697,7 @@
           </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
             <div class="icon"><i class="bi bi-binoculars"></i></div>
-            <h4 class="title"><a href="">ML LMM AIGC Deployment Consultanting</a></h4>
+            <h4 class="title"><a href="" data-i18n="services.item4.title">ML LMM AIGC Deployment Consultanting</a></h4>
             <p class="description">Our consulting services initiate with a comprehensive evaluation of how machine
               learning, language models, and artificial intelligence-generated content can elevate your operational
               efficiency, enhance decision-making, and drive revenue growth. We specialize in deploying advanced AI
@@ -698,7 +705,7 @@
           </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
             <div class="icon"><i class="bi bi-brightness-high"></i></div>
-            <h4 class="title"><a href="">Commercial Real Estate Counsultanting & Architect Design</a></h4>
+            <h4 class="title"><a href="" data-i18n="services.item5.title">Commercial Real Estate Counsultanting & Architect Design</a></h4>
             <p class="description">At the intersection of commercial real estate consulting and architectural design,
               our service excels in transforming conceptual frameworks into tangible assets. We specialize in
               comprehensive project management, from initial site analysis and feasibility studies to the creation of
@@ -710,7 +717,7 @@
           </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="500">
             <div class="icon"><i class="bi bi-calendar4-week"></i></div>
-            <h4 class="title"><a href="">Cloud Computing Consulting</a></h4>
+            <h4 class="title"><a href="" data-i18n="services.item6.title">Cloud Computing Consulting</a></h4>
             <p class="description">
               We enable every client to harness the full potential of cloud computing, empowering them to launch, scale,
               and optimize their applications without the need for deep technical know-how. Our consulting services
@@ -818,8 +825,8 @@
     <section id="contact" class="contact">
       <div class="container">
         <div class="section-title">
-          <h2>Contact</h2>
-          <p>Email me with any questions or inquiries. I would be happy to answer your questions and set up a meeting
+          <h2 data-i18n="section.contact.title">Contact</h2>
+          <p data-i18n="section.contact.desc">Email me with any questions or inquiries. I would be happy to answer your questions and set up a meeting
             with you.</p>
         </div>
 
@@ -828,19 +835,19 @@
             <div class="info">
               <div class="address">
                 <i class="bi bi-geo-alt"></i>
-                <h4>Location:</h4>
+                <h4 data-i18n="contact.info.location">Location:</h4>
                 <p>2 The Hermitage Way Gledswood Hills 2557 NSW Australia</p>
               </div>
 
               <div class="email">
                 <i class="bi bi-envelope"></i>
-                <h4>Email:</h4>
+                <h4 data-i18n="contact.info.email">Email:</h4>
                 <p>a0405142777@gmail.com</p>
               </div>
 
               <div class="phone">
                 <i class="bi bi-phone"></i>
-                <h4>Call:</h4>
+                <h4 data-i18n="contact.info.call">Call:</h4>
                 <p>+61 405142777</p>
               </div>
 
@@ -860,36 +867,36 @@
               
               <div class="row">
                 <div class="form-group col-md-6">
-                  <label for="name">Your Name</label>
+                  <label for="name" data-i18n="contact.form.name_label">Your Name</label>
                   <input type="text" name="name" class="form-control" id="name" required>
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="email">Your Email</label>
+                  <label for="email" data-i18n="contact.form.email_label">Your Email</label>
                   <input type="email" class="form-control" name="email" id="email" required>
                 </div>
               </div>
               <div class="form-group">
-                <label for="user_subject">Subject</label>
+                <label for="user_subject" data-i18n="contact.form.subject_label">Subject</label>
                 <input type="text" class="form-control" name="user_subject" id="user_subject" required>
               </div>
               <div class="form-group">
-                <label for="message">Message</label>
+                <label for="message" data-i18n="contact.form.message_label">Message</label>
                 <textarea class="form-control" name="message" id="message" rows="10" required></textarea>
               </div>
               <div class="my-3">
                 <div class="loading" style="display:none; color: #149ddd; font-weight: 500;">
-                  <i class="bi bi-hourglass-split"></i> 正在傳送中，請稍後...
+                  <i class="bi bi-hourglass-split"></i> Sending, please wait...
                 </div>
                 <div class="error-message" style="display:none; color: #dc3545; font-weight: 500;"></div>
                 <div class="sent-message" style="display:none; color: #28a745; font-weight: 500;">
-                  <i class="bi bi-check-circle"></i> 已經傳送成功，我會盡速與您聯絡，謝謝您的寶貴時間！
+                  <i class="bi bi-check-circle"></i> Message sent successfully, I will contact you soon!
                 </div>
               </div>
               <div class="text-center">
                 <button type="submit" id="submitBtn" class="btn-submit">
-                  <span class="btn-text">Send Message</span>
+                  <span class="btn-text" data-i18n="contact.form.submit">Send Message</span>
                   <span class="btn-loading" style="display:none;">
-                    <i class="bi bi-arrow-clockwise" style="animation: spin 1s linear infinite;"></i> Sending...
+                    <i class="bi bi-arrow-clockwise" style="animation: spin 1s linear infinite;"></i> <span data-i18n="contact.form.sending">Sending...</span>
                   </span>
                 </button>
               </div>
@@ -988,7 +995,7 @@
         } else {
           // Show error message
           errorDiv.style.display = 'block';
-          errorDiv.textContent = '發送失敗，請稍後再試或直接聯絡我們：a0405142777@gmail.com';
+          errorDiv.textContent = 'Sending failed, please try again later or contact us directly: a0405142777@gmail.com';
         }
       } catch (error) {
         // Hide loading
@@ -999,7 +1006,7 @@
         
         // Show error message
         errorDiv.style.display = 'block';
-        errorDiv.textContent = '網路錯誤，請檢查您的網路連線或直接聯絡我們：a0405142777@gmail.com';
+        errorDiv.textContent = 'Network error, please check your connection or contact us directly: a0405142777@gmail.com';
       }
     });
   </script>
