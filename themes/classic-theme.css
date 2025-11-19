@@ -1,0 +1,94 @@
+:root {
+  --primary-color: #149ddd;
+  --secondary-color: #1f5297;
+  --background-color: #ffffff;
+  --background-alt: #f5f8fd;
+  --text-color: #272829;
+  --muted-text-color: #6f7180;
+  --accent-color: #37b3ed;
+  --link-color: #149ddd;
+  --link-hover-color: #37b3ed;
+  --header-bg: #040b14;
+  --profile-border-color: #2c2f3f;
+  --nav-link-color: #a8a9b4;
+  --nav-link-active-color: #ffffff;
+  --nav-icon-color: #6f7180;
+  --section-title-color: #173b6c;
+  --section-highlight: #149ddd;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  --font-sans: "SF Pro Text", "Roboto", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --transition-fast: all 0.3s ease;
+}
+
+.theme-classic {
+  --primary-color: #149ddd;
+  --secondary-color: #1f5297;
+  --background-color: #ffffff;
+  --background-alt: #f5f8fd;
+  --text-color: #272829;
+  --muted-text-color: #6f7180;
+  --accent-color: #37b3ed;
+  --link-color: #149ddd;
+  --link-hover-color: #37b3ed;
+  --header-bg: #040b14;
+  --profile-border-color: #2c2f3f;
+  --nav-link-color: #a8a9b4;
+  --nav-link-active-color: #ffffff;
+  --nav-icon-color: #6f7180;
+  --section-title-color: #173b6c;
+  --section-highlight: #149ddd;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  --font-sans: "SF Pro Text", "Roboto", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --transition-fast: all 0.3s ease;
+}
+
+@supports (color: var(--primary-color)) {
+  html, body { background-color: var(--background-color); color: var(--text-color); transition: var(--transition-fast); }
+  body { font-family: var(--font-sans); }
+  a { color: var(--link-color); transition: var(--transition-fast); }
+  a:hover { color: var(--link-hover-color); }
+  #header { background: var(--header-bg); }
+  #header .profile img { border: 8px solid var(--profile-border-color); }
+  .nav-menu a, .nav-menu a:focus { color: var(--nav-link-color); transition: var(--transition-fast); }
+  .nav-menu a:hover, .nav-menu .active, .nav-menu .active:focus, .nav-menu li:hover > a { color: var(--nav-link-active-color); }
+  .nav-menu a i, .nav-menu a:focus i { color: var(--nav-icon-color); }
+  .nav-menu a:hover i, .nav-menu .active i, .nav-menu .active:focus i, .nav-menu li:hover > a i { color: var(--link-color); }
+  .section-bg { background: var(--background-alt); }
+  .section-title h2 { color: var(--section-title-color); }
+  .section-title h2::after { background: var(--section-highlight); }
+  .skills .progress-bar { background-color: var(--primary-color); transition: var(--transition-fast); }
+  .services .icon { background: var(--primary-color); border: 1px solid var(--primary-color); border-radius: var(--border-radius); transition: var(--transition-fast); }
+  .services .icon-box:hover .icon { background: var(--background-color); }
+  .services .icon-box:hover .icon i { color: var(--primary-color); }
+  .testimonials .testimonial-item p { border-radius: var(--border-radius); box-shadow: var(--box-shadow); transition: var(--transition-fast); }
+  .portfolio-details .portfolio-info { box-shadow: var(--box-shadow); border-radius: var(--border-radius); transition: var(--transition-fast); }
+  .portfolio .portfolio-wrap { border-radius: var(--border-radius); transition: var(--transition-fast); }
+  .contact .info { box-shadow: var(--box-shadow); border-radius: var(--border-radius); transition: var(--transition-fast); }
+  .contact .php-email-form { box-shadow: var(--box-shadow); border-radius: var(--border-radius); transition: var(--transition-fast); }
+  .contact .info i { color: var(--primary-color); transition: var(--transition-fast); }
+  .contact .php-email-form button[type="submit"] { background: var(--primary-color); border-radius: 4px; transition: var(--transition-fast); }
+  .contact .php-email-form button[type="submit"]:hover { background: var(--accent-color); }
+  .mobile-nav-toggle { background-color: var(--primary-color); border-radius: 50px; transition: var(--transition-fast); }
+  #hero h1 { letter-spacing: 0.5px; }
+  #hero p { letter-spacing: 0.3px; }
+  .section-title { padding-bottom: var(--space-3); }
+  .nav-menu a { margin-bottom: var(--space-1); }
+}
+
+html.theme-animating *, html.theme-animating, body.theme-animating { transition: all 0.3s ease !important; }
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  html, body { background-color: #ffffff; color: #272829; }
+  a { color: #149ddd; }
+  a:hover { color: #37b3ed; }
+}
