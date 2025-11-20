@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>樣式指南 Style Guide</title>
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../themes/classic-theme.css" rel="stylesheet">
+  <link href="../themes/modern-theme.css" rel="stylesheet">
+  <link href="../themes/minimal-modern.css" rel="stylesheet">
+  <link href="../themes/vintage-classic.css" rel="stylesheet">
+  <link href="../themes/futuristic-tech.css" rel="stylesheet">
+  <style>
+    body { padding: 24px; }
+    .token { font-family: monospace; }
+    .section { margin-bottom: 32px; }
+    .print { position: fixed; top: 16px; right: 16px; z-index: 10; }
+    .swatch { display: inline-block; width: 24px; height: 24px; border-radius: 4px; margin-right: 8px; vertical-align: middle; }
+    @media print { .print { display: none; } }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&family=Orbitron:wght@700&family=Rajdhani:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <button class="btn btn-primary print" onclick="window.print()">列印為 PDF</button>
+  <h1>樣式指南</h1>
+
+  <div class="section">
+    <h2>現代簡約 Minimal</h2>
+    <p>檔案: <span class="token">themes/minimal-modern.css</span> 類別: <span class="token">.theme-minimal</span></p>
+    <ul>
+      <li>色彩: <span class="swatch" style="background:#ffffff"></span>#FFFFFF <span class="swatch" style="background:#f5f5f5"></span>#F5F5F5 <span class="swatch" style="background:#e0e0e0"></span>#E0E0E0 <span class="swatch" style="background:#2196f3"></span>#2196F3 <span class="swatch" style="background:#ff5252"></span>#FF5252</li>
+      <li>字體: 標題 Roboto 24pt 正文 Helvetica 16pt 交互 Roboto Medium 14pt</li>
+      <li>按鈕: 圓角 4px 細邊框 1px 懸停透明度 0.8→1 縮放 1→1.02</li>
+      <li>輸入框: 下劃線樣式 聚焦邊線動畫</li>
+      <li>動效: 200ms 淡入淡出 ease-in-out 懸停 100ms scale(1→1.02)</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>復古經典 Vintage</h2>
+    <p>檔案: <span class="token">themes/vintage-classic.css</span> 類別: <span class="token">.theme-vintage</span></p>
+    <ul>
+      <li>色彩: <span class="swatch" style="background:#3e2723"></span>#3E2723 <span class="swatch" style="background:#1b5e20"></span>#1B5E20 <span class="swatch" style="background:#b71c1c"></span>#B71C1C <span class="swatch" style="background:#f5f5dc"></span>#F5F5DC</li>
+      <li>字體: 標題 Times New Roman 20pt 陰影 正文 Georgia 14pt</li>
+      <li>裝飾: 古典花紋邊框 SVG 邀請樣式類 <span class="token">.decorated-border</span> 背景麻布紋 <span class="token">.linen-bg</span></li>
+      <li>動效: 擬真翻頁 500ms 類 <span class="token">.page-turning</span></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>未來科技 Futuristic</h2>
+    <p>檔案: <span class="token">themes/futuristic-tech.css</span> 類別: <span class="token">.theme-futuristic</span></p>
+    <ul>
+      <li>色彩: <span class="swatch" style="background:#0f0f1a"></span>#0F0F1A <span class="swatch" style="background:#00f5ff"></span>#00F5FF <span class="swatch" style="background:#ff00e4"></span>#FF00E4</li>
+      <li>字體: 標題 Orbitron 28pt 外發光 正文 Rajdhani 14pt</li>
+      <li>全息: 類 <span class="token">.holographic</span> 3D 變換 懸停升高</li>
+      <li>粒子: Canvas 疊加 元件 <span class="token">#particleCanvas</span></li>
+      <li>能量流: 身體邊緣動畫 <span class="token">@keyframes energyFlow</span></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>性能最佳化</h2>
+    <ul>
+      <li>GPU 加速: 使用 transform/opacity 並設定 will-change</li>
+      <li>動畫時長: 主題切換 200ms; 翻頁 500ms</li>
+      <li>資源控制: 粒子數量上限 160; 動畫使用 requestAnimationFrame</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>樣式切換器位置</h2>
+    <ul>
+      <li>定位: 右上角固定定位（`#styleSwitcher`）</li>
+      <li>邊距: 桌面 16px（含安全區）；行動 12px，上方避讓漢堡鈕，右側 64px</li>
+      <li>過渡: `opacity/transform/top/right` 0.2s ease</li>
+      <li>相容: 各頁面一致，與主題切換邏輯不變</li>
+      <li>安全區: 使用 `env(safe-area-inset-*)` 適配 iOS Safari 瀏海裝置</li>
+    </ul>
+  </div>
+</body>
+</html>

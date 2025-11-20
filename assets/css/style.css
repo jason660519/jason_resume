@@ -818,6 +818,23 @@ section {
 .contact .php-email-form .form-group {
   padding-bottom: 8px;
 }
+
+/* Style Switcher positioning */
+#styleSwitcher {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  right: calc(16px + env(safe-area-inset-right));
+  top: calc(16px + env(safe-area-inset-top));
+  z-index: 1040;
+  transition: opacity 0.2s ease, transform 0.2s ease, top 0.2s ease, right 0.2s ease;
+}
+#styleSwitcher:hover, #styleSwitcher:focus {
+  transform: translateY(-1px);
+}
+@media (max-width: 768px) {
+  #styleSwitcher { top: 12px; right: 64px; right: calc(64px + env(safe-area-inset-right)); }
+}
 .contact .php-email-form .validate {
   display: none;
   color: red;

@@ -26,6 +26,12 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <link href="themes/classic-theme.css" rel="stylesheet">
+  <link href="themes/modern-theme.css" rel="stylesheet">
+  <link href="themes/minimal-modern.css" rel="stylesheet">
+  <link href="themes/vintage-classic.css" rel="stylesheet">
+  <link href="themes/futuristic-tech.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rajdhani:wght@600&display=swap" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: iPortfolio - v3.6.0
@@ -60,6 +66,13 @@
         <a href="index-en.html" class="btn btn-sm btn-outline-light mx-1">EN</a>
         <a href="index-zh.html" class="btn btn-sm btn-outline-light mx-1">繁</a>
         <a href="index-zh-hans.html" class="btn btn-sm btn-outline-light mx-1">简</a>
+        <select id="styleSwitcher" class="form-select form-select-sm w-auto d-inline-block mx-1" aria-label="Style Switcher" data-style-switcher>
+          <option value="theme-classic">Classic</option>
+          <option value="theme-modern">Modern</option>
+          <option value="theme-minimal">Minimal</option>
+          <option value="theme-vintage">Vintage</option>
+          <option value="theme-futuristic">Futuristic</option>
+        </select>
       </div>
 
       <nav id="navbar" class="nav-menu navbar">
@@ -172,7 +185,8 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/typed.js/typed.min.js"></script>
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-
+  <script src="js/theme-switcher.js" defer></script>
+  
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 

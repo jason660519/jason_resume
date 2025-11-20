@@ -31,6 +31,10 @@
   <link href="assets/css/style.css" rel="stylesheet">
   <link href="themes/classic-theme.css" rel="stylesheet">
   <link href="themes/modern-theme.css" rel="stylesheet">
+  <link href="themes/minimal-modern.css" rel="stylesheet">
+  <link href="themes/vintage-classic.css" rel="stylesheet">
+  <link href="themes/futuristic-tech.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rajdhani:wght@600&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -56,11 +60,17 @@
             </svg>
           </a>
         </div>
-        <div class="text-center mt-2" aria-label="Language">
+        <div class="text-center mt-2" aria-label="Language and Theme">
           <a href="index-en.html" class="btn btn-sm btn-outline-light mx-1">EN</a>
           <a href="index-zh.html" class="btn btn-sm btn-outline-light mx-1">繁</a>
           <a href="index-zh-hans.html" class="btn btn-sm btn-outline-light mx-1">简</a>
-          <button id="themeToggle" class="btn btn-sm btn-outline-light mx-1" data-theme-toggle>Theme</button>
+          <select id="styleSwitcher" class="form-select form-select-sm w-auto d-inline-block mx-1" aria-label="Style Switcher" data-style-switcher>
+            <option value="theme-classic">Classic</option>
+            <option value="theme-modern">Modern</option>
+            <option value="theme-minimal">Minimal</option>
+            <option value="theme-vintage">Vintage</option>
+            <option value="theme-futuristic">Futuristic</option>
+          </select>
         </div>
       </div>
 
@@ -220,8 +230,8 @@
           <h3 class="resume-title">Professional Certification</h3>
           <ul>
             <li><a href="assets/img/Google Cloud Certified Professional Cloud Architect.png" class="portfolio-lightbox">GCP professional Architect Certificate No.88174</a></li>
-            <li><a href="assets/img/Terrafrom Certified Accociate.png" class="portfolio-lightbox">HashiCorp Terraform Certified Associate</a></li>
-            <li><a href="assets/img/Github Action Certification.png" class="portfolio-lightbox">GitHub Actions Certification</a></li>
+            <li><a href="assets/img/Terraform Certified Associate.png" class="portfolio-lightbox">HashiCorp Terraform Certified Associate</a></li>
+            <li><a href="assets/img/GitHub Actions Certification.png" class="portfolio-lightbox">GitHub Actions Certification</a></li>
             <li><a href="https://www.cloudskillsboost.google/public_profiles/efa3a21c-52fd-4683-b5c5-2967bc7a6cf9" target="_blank">Google Cloud Skills Boost Badge Awards: 28 GCP Courses and 51650 League points</a></li>
             <li><a href="https://www.udemy.com/certificate/UC-e0adf95d-3306-4d4b-af03-8a4aab91603b/" target="_blank">Stock & Option trading strategies (Python API for Broker Interactive)</a></li>
             <li><a href="https://www.ccim.com/" target="_blank">Data structure and algorithm (Javascript)</a></li>

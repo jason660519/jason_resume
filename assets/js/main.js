@@ -253,4 +253,105 @@
     })
   });
 
+  const themeClasses = ['theme-classic','theme-modern','theme-minimal','theme-vintage','theme-futuristic']
+  const getSavedTheme = () => localStorage.getItem('theme') || 'theme-classic'
+  const applyTheme = (cls) => {
+    const html = document.documentElement
+    const body = document.body
+    themeClasses.forEach(c => html.classList.remove(c))
+    themeClasses.forEach(c => body.classList.remove(c))
+    html.classList.add(cls)
+    body.classList.add(cls)
+  }
+  const setAnimating = (ms) => {
+    const html = document.documentElement
+    const body = document.body
+    html.classList.add('theme-animating')
+    body.classList.add('theme-animating')
+    setTimeout(() => { html.classList.remove('theme-animating'); body.classList.remove('theme-animating') }, ms)
+  }
+  const selectEl = select('#styleSwitcher')
+  const initTheme = () => {
+    const current = getSavedTheme()
+    applyTheme(current)
+    if (selectEl) selectEl.value = current
+    if (current === 'theme-futuristic') startParticles()
+  }
+  window.addEventListener('load', initTheme)
+  if (selectEl) {
+    selectEl.addEventListener('change', (e) => {
+      const val = e.target.value
+      localStorage.setItem('theme', val)
+      applyTheme(val)
+      setAnimating(200)
+      if (val === 'theme-futuristic') startParticles(); else stopParticles()
+    })
+  }
+
+  const pageTurn = () => {
+    const main = select('#main')
+    if (!main) return
+    const html = document.documentElement
+    if (html.classList.contains('theme-vintage')) {
+      main.classList.add('page-turning')
+      setTimeout(() => { main.classList.remove('page-turning') }, 500)
+    }
+  }
+  on('click', '.scrollto', function(e) { pageTurn() }, true)
+
+  let particleCanvas
+  let ctx
+  let rafId
+  let particles = []
+  const startParticles = () => {
+    if (particleCanvas) return
+    particleCanvas = document.createElement('canvas')
+    particleCanvas.id = 'particleCanvas'
+    document.body.appendChild(particleCanvas)
+    ctx = particleCanvas.getContext('2d')
+    const resize = () => {
+      const dpr = window.devicePixelRatio || 1
+      particleCanvas.width = Math.floor(window.innerWidth * dpr)
+      particleCanvas.height = Math.floor(window.innerHeight * dpr)
+      particleCanvas.style.width = '100vw'
+      particleCanvas.style.height = '100vh'
+      ctx.setTransform(dpr,0,0,dpr,0,0)
+    }
+    resize()
+    window.addEventListener('resize', resize)
+    const addParticle = (x,y) => {
+      particles.push({x,y,vx:(Math.random()-0.5)*0.6,vy:(Math.random()-0.5)*0.6,life:1,size:2+Math.random()*2,color:Math.random()<0.5?'#00f5ff':'#ff00e4'})
+      if (particles.length>160) particles.shift()
+    }
+    window.addEventListener('mousemove', (e)=>{ addParticle(e.clientX,e.clientY) })
+    const step = () => {
+      ctx.clearRect(0,0,particleCanvas.width,particleCanvas.height)
+      for (let i=0;i<particles.length;i++) {
+        const p = particles[i]
+        p.x += p.vx
+        p.y += p.vy
+        p.life -= 0.01
+        if (p.life<=0) { particles.splice(i,1); i--; continue }
+        ctx.globalAlpha = Math.max(p.life,0)
+        ctx.beginPath()
+        ctx.arc(p.x,p.y,p.size,0,Math.PI*2)
+        ctx.fillStyle = p.color
+        ctx.shadowColor = p.color
+        ctx.shadowBlur = 8
+        ctx.fill()
+      }
+      rafId = requestAnimationFrame(step)
+    }
+    rafId = requestAnimationFrame(step)
+  }
+  const stopParticles = () => {
+    if (!particleCanvas) return
+    cancelAnimationFrame(rafId)
+    rafId = null
+    particles = []
+    particleCanvas.remove()
+    particleCanvas = null
+    ctx = null
+  }
+
 })()

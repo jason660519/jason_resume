@@ -1,0 +1,86 @@
+.theme-futuristic {
+  --dark-base: #0f0f1a;
+  --neon-blue: #00f5ff;
+  --neon-purple: #ff00e4;
+  --primary-color: var(--neon-blue);
+  --accent-color: var(--neon-purple);
+  --background-color: var(--dark-base);
+  --background-alt: #151526;
+  --text-color: #e6e6ff;
+  --muted-text-color: #a5a5bf;
+  --link-color: var(--neon-blue);
+  --link-hover-color: #38ffff;
+  --header-bg: #0a0a14;
+  --profile-border-color: #1f1f3a;
+  --nav-link-color: #a5a5bf;
+  --nav-link-active-color: #e6e6ff;
+  --nav-icon-color: #7a7aa0;
+  --section-title-color: #cfd0ff;
+  --section-highlight: var(--neon-blue);
+  --border-radius: 10px;
+  --box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  --font-sans: "Rajdhani", "Roboto", "Segoe UI", Arial, sans-serif;
+  --font-title: "Orbitron", "Rajdhani", sans-serif;
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --transition-fast: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+@supports (color: var(--primary-color)) {
+  html.theme-futuristic, body.theme-futuristic { background-color: var(--background-color); color: var(--text-color); }
+  .theme-futuristic body { font-family: var(--font-sans); }
+  .theme-futuristic a { color: var(--link-color); }
+  .theme-futuristic a:hover { color: var(--link-hover-color); }
+  .theme-futuristic #header { background: var(--header-bg); }
+  .theme-futuristic #header .profile img { border: 10px solid rgba(0,0,0,0.4); box-shadow: 0 0 12px rgba(0,245,255,0.5); }
+  .theme-futuristic .nav-menu a, .theme-futuristic .nav-menu a:focus { color: var(--nav-link-color); }
+  .theme-futuristic .nav-menu a:hover, .theme-futuristic .nav-menu .active, .theme-futuristic .nav-menu .active:focus, .theme-futuristic .nav-menu li:hover > a { color: var(--nav-link-active-color); }
+  .theme-futuristic .nav-menu a i, .theme-futuristic .nav-menu a:focus i { color: var(--nav-icon-color); }
+  .theme-futuristic .section-bg { background: var(--background-alt); }
+  .theme-futuristic .section-title h2 { color: var(--section-title-color); font-family: var(--font-title); font-weight: 700; font-size: 28pt; text-shadow: 0 0 8px rgba(0,245,255,0.6), 0 0 16px rgba(255,0,228,0.4); }
+  .theme-futuristic .section-title h2::after { background: var(--section-highlight); box-shadow: 0 0 8px rgba(0,245,255,0.8); }
+  .theme-futuristic #hero h1 { font-family: var(--font-title); font-weight: 700; font-size: 28pt; text-shadow: 0 0 10px rgba(0,245,255,0.7); }
+  .theme-futuristic #hero p { font-family: var(--font-sans); font-size: 14pt; }
+  .theme-futuristic .services .icon { background: linear-gradient(135deg, rgba(0,245,255,0.2), rgba(255,0,228,0.2)); border: 1px solid rgba(0,245,255,0.6); border-radius: var(--border-radius); box-shadow: 0 0 12px rgba(0,245,255,0.4); }
+  .theme-futuristic .services .icon-box:hover .icon { background: rgba(0,0,0,0.2); }
+  .theme-futuristic .services .icon-box:hover .icon i { color: var(--primary-color); }
+  .theme-futuristic .portfolio .portfolio-wrap, .theme-futuristic .services .icon-box { perspective: 1000px; transform-style: preserve-3d; transition: var(--transition-fast); will-change: transform; }
+  .theme-futuristic .portfolio .portfolio-wrap:hover, .theme-futuristic .services .icon-box:hover { transform: translateZ(12px) scale(1.02); box-shadow: 0 0 20px rgba(0,245,255,0.4); }
+  .theme-futuristic .holographic { background: linear-gradient(135deg, rgba(0,245,255,0.12), rgba(255,0,228,0.12)); border: 1px solid rgba(0,245,255,0.5); box-shadow: 0 0 20px rgba(0,245,255,0.3); backdrop-filter: blur(6px); transform: translateZ(0); will-change: transform, box-shadow; }
+}
+
+@keyframes energyFlow {
+  0% { background-position: 0 0, 100% 0, 0 100%, 100% 100%; }
+  50% { background-position: 50% 0, 50% 0, 50% 100%, 50% 100%; }
+  100% { background-position: 100% 0, 0 0, 100% 100%, 0 100%; }
+}
+
+body.theme-futuristic::before, body.theme-futuristic::after {
+  content: "";
+  position: fixed;
+  pointer-events: none;
+  inset: 0;
+  border-radius: 12px;
+}
+
+body.theme-futuristic::before {
+  border: 2px solid rgba(0,245,255,0.4);
+  box-shadow: 0 0 12px rgba(0,245,255,0.4);
+}
+
+body.theme-futuristic::after {
+  background: linear-gradient(90deg, rgba(0,245,255,0.3), transparent), linear-gradient(180deg, rgba(255,0,228,0.3), transparent), linear-gradient(270deg, rgba(0,245,255,0.3), transparent), linear-gradient(0deg, rgba(255,0,228,0.3), transparent);
+  animation: energyFlow 6s linear infinite;
+}
+
+canvas#particleCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  pointer-events: none;
+}

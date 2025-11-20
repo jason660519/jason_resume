@@ -1,0 +1,61 @@
+.theme-minimal {
+  --neutral-color-1: #ffffff;
+  --neutral-color-2: #f5f5f5;
+  --neutral-color-3: #e0e0e0;
+  --accent-color-1: #2196f3;
+  --accent-color-2: #ff5252;
+  --primary-color: var(--accent-color-1);
+  --background-color: var(--neutral-color-1);
+  --background-alt: var(--neutral-color-2);
+  --text-color: #111111;
+  --muted-text-color: #666666;
+  --link-color: var(--accent-color-1);
+  --link-hover-color: #1976d2;
+  --header-bg: #0b1324;
+  --profile-border-color: #d0d0d0;
+  --nav-link-color: #757575;
+  --nav-link-active-color: #111111;
+  --nav-icon-color: #9e9e9e;
+  --section-title-color: #202124;
+  --section-highlight: var(--accent-color-1);
+  --border-radius: 4px;
+  --box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  --font-sans: Helvetica, Arial, "Roboto", "Segoe UI", "Helvetica Neue", sans-serif;
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --transition-fast: opacity 0.2s ease-in-out, transform 0.1s ease-in-out, background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+@supports (color: var(--primary-color)) {
+  html.theme-minimal, body.theme-minimal { background-color: var(--background-color); color: var(--text-color); will-change: background-color, color; }
+  .theme-minimal body { font-family: var(--font-sans); }
+  .theme-minimal a { color: var(--link-color); transition: var(--transition-fast); }
+  .theme-minimal a:hover { color: var(--link-hover-color); }
+  .theme-minimal #header { background: var(--header-bg); }
+  .theme-minimal #header .profile img { border: 4px solid var(--profile-border-color); }
+  .theme-minimal .nav-menu a, .theme-minimal .nav-menu a:focus { color: var(--nav-link-color); transition: var(--transition-fast); }
+  .theme-minimal .nav-menu a:hover, .theme-minimal .nav-menu .active, .theme-minimal .nav-menu .active:focus, .theme-minimal .nav-menu li:hover > a { color: var(--nav-link-active-color); }
+  .theme-minimal .nav-menu a i, .theme-minimal .nav-menu a:focus i { color: var(--nav-icon-color); }
+  .theme-minimal .nav-menu a:hover i, .theme-minimal .nav-menu .active i, .theme-minimal .nav-menu .active:focus i, .theme-minimal .nav-menu li:hover > a i { color: var(--link-color); }
+  .theme-minimal .section-bg { background: var(--background-alt); }
+  .theme-minimal .section-title h2 { color: var(--section-title-color); }
+  .theme-minimal .section-title h2::after { background: var(--section-highlight); }
+  .theme-minimal #hero h1 { font-family: "Roboto", sans-serif; font-weight: 700; font-size: 24pt; letter-spacing: 0.4px; }
+  .theme-minimal #hero p { font-family: Helvetica, Arial, sans-serif; font-size: 16pt; }
+  .theme-minimal .btn, .theme-minimal .btn-outline-light, .theme-minimal .contact .php-email-form button[type="submit"] { border-radius: 4px; border: 1px solid var(--neutral-color-3); opacity: 0.8; transition: var(--transition-fast); will-change: opacity, transform; }
+  .theme-minimal .btn:hover, .theme-minimal .btn-outline-light:hover, .theme-minimal .contact .php-email-form button[type="submit"]:hover { opacity: 1; transform: scale(1.02); }
+  .theme-minimal .contact .php-email-form button[type="submit"] { background: var(--primary-color); }
+  .theme-minimal .contact .php-email-form button[type="submit"]:hover { background: var(--accent-color-1); }
+  .theme-minimal input[type="text"], .theme-minimal input[type="email"], .theme-minimal input[type="url"], .theme-minimal textarea, .theme-minimal select { background: transparent; border: none; border-bottom: 2px solid var(--neutral-color-3); border-radius: 0; transition: width 0.2s ease-in-out, border-color 0.2s ease-in-out; will-change: border-color, width; }
+  .theme-minimal input[type="text"]:focus, .theme-minimal input[type="email"]:focus, .theme-minimal input[type="url"]:focus, .theme-minimal textarea:focus, .theme-minimal select:focus { outline: none; border-bottom-color: var(--accent-color-1); }
+  .theme-minimal .skills .progress-bar { background-color: var(--primary-color); transition: var(--transition-fast); }
+  .theme-minimal .services .icon { background: var(--primary-color); border: 1px solid var(--primary-color); border-radius: var(--border-radius); transition: var(--transition-fast); }
+  .theme-minimal .services .icon-box:hover .icon { background: var(--background-color); }
+  .theme-minimal .services .icon-box:hover .icon i { color: var(--primary-color); }
+  .theme-minimal .portfolio .portfolio-wrap, .theme-minimal .services .icon-box { transition: var(--transition-fast); will-change: transform; }
+  .theme-minimal .portfolio .portfolio-wrap:hover, .theme-minimal .services .icon-box:hover { transform: scale(1.02); }
+}
+
+html.theme-animating *, html.theme-animating, body.theme-animating { transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out !important; }

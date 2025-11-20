@@ -31,6 +31,10 @@
   <link href="assets/css/style.css" rel="stylesheet">
   <link href="themes/classic-theme.css" rel="stylesheet">
   <link href="themes/modern-theme.css" rel="stylesheet">
+  <link href="themes/minimal-modern.css" rel="stylesheet">
+  <link href="themes/vintage-classic.css" rel="stylesheet">
+  <link href="themes/futuristic-tech.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rajdhani:wght@600&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -56,11 +60,17 @@
             </svg>
           </a>
         </div>
-        <div class="text-center mt-2" aria-label="Language">
+        <div class="text-center mt-2" aria-label="Language and Theme">
           <a href="index-en.html" class="btn btn-sm btn-outline-light mx-1">EN</a>
           <a href="index-zh.html" class="btn btn-sm btn-outline-light mx-1">繁</a>
           <a href="index-zh-hans.html" class="btn btn-sm btn-outline-light mx-1">简</a>
-          <button id="themeToggle" class="btn btn-sm btn-outline-light mx-1" data-theme-toggle>切換主題</button>
+          <select id="styleSwitcher" class="form-select form-select-sm w-auto d-inline-block mx-1" aria-label="Style Switcher" data-style-switcher>
+            <option value="theme-classic">經典</option>
+            <option value="theme-modern">現代</option>
+            <option value="theme-minimal">簡約</option>
+            <option value="theme-vintage">復古</option>
+            <option value="theme-futuristic">未來</option>
+          </select>
         </div>
       </div>
 
@@ -187,8 +197,8 @@
         <div class="section-title"><h2>履歷</h2><h3 class="resume-title">專業認證</h3>
           <ul>
             <li><a href="assets/img/Google Cloud Certified Professional Cloud Architect.png" class="portfolio-lightbox">GCP 專業架構師（證書編號 88174）</a></li>
-            <li><a href="assets/img/Terrafrom Certified Accociate.png" class="portfolio-lightbox">HashiCorp Terraform 認證</a></li>
-            <li><a href="assets/img/Github Action Certification.png" class="portfolio-lightbox">GitHub Actions 認證</a></li>
+            <li><a href="assets/img/Terraform Certified Associate.png" class="portfolio-lightbox">HashiCorp Terraform 認證</a></li>
+            <li><a href="assets/img/GitHub Actions Certification.png" class="portfolio-lightbox">GitHub Actions 認證</a></li>
             <li><a href="https://www.cloudskillsboost.google/public_profiles/efa3a21c-52fd-4683-b5c5-2967bc7a6cf9" target="_blank">Google Cloud Skills Boost：28 門課程、51650 積分</a></li>
             <li><a href="https://www.udemy.com/certificate/UC-e0adf95d-3306-4d4b-af03-8a4aab91603b/" target="_blank">股票與選擇權交易策略（Python API：Interactive Brokers）</a></li>
             <li><a href="https://www.ccim.com/" target="_blank">資料結構與演算法（JavaScript）</a></li>

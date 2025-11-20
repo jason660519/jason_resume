@@ -1,11 +1,14 @@
 class ThemeSwitcher {
   constructor(options = {}) {
-    this.storageKey = options.storageKey || 'userThemePreference';
-    this.defaultTheme = options.defaultTheme || 'classic';
+    this.storageKey = options.storageKey || 'theme';
+    this.defaultTheme = options.defaultTheme || 'theme-classic';
     this.root = document.documentElement;
+    this.body = document.body;
     this.toggleSelector = options.toggleSelector || '[data-theme-toggle],#themeToggle';
+    this.selectSelector = options.selectSelector || '[data-style-switcher],#styleSwitcher';
     this.transitionClass = options.transitionClass || 'theme-animating';
-    this.transitionMs = 300;
+    this.transitionMs = 200;
+    this.themeClasses = ['theme-classic','theme-modern','theme-minimal','theme-vintage','theme-futuristic'];
   }
 
   init() {
@@ -20,14 +23,14 @@ class ThemeSwitcher {
     document.addEventListener('click', e => {
       const t = e.target.closest(this.toggleSelector);
       if (!t) return;
-      const next = this.currentTheme() === 'modern' ? 'classic' : 'modern';
+      const next = this.nextTheme(this.currentTheme());
       this.applyTheme(next, true);
     });
     document.addEventListener('change', e => {
-      const t = e.target.closest('[data-theme-select]');
+      const t = e.target.closest(this.selectSelector);
       if (!t) return;
-      const value = String(t.value || '').toLowerCase();
-      if (value === 'modern' || value === 'classic') this.applyTheme(value, true);
+      const value = String(t.value || '').trim();
+      if (this.themeClasses.includes(value)) this.applyTheme(value, true);
     });
   }
 
@@ -40,12 +43,20 @@ class ThemeSwitcher {
   }
 
   currentTheme() {
-    return this.root.classList.contains('theme-modern') ? 'modern' : 'classic';
+    for (const cls of this.themeClasses) if (this.root.classList.contains(cls)) return cls;
+    return this.defaultTheme;
+  }
+
+  nextTheme(current) {
+    const i = this.themeClasses.indexOf(current);
+    const ni = i >= 0 ? (i + 1) % this.themeClasses.length : 0;
+    return this.themeClasses[ni];
   }
 
   applyTheme(theme, persist) {
-    this.root.classList.remove('theme-modern', 'theme-classic');
-    if (theme === 'modern') this.root.classList.add('theme-modern'); else this.root.classList.add('theme-classic');
+    this.themeClasses.forEach(c => { this.root.classList.remove(c); this.body.classList.remove(c); });
+    this.root.classList.add(theme);
+    this.body.classList.add(theme);
     this.root.setAttribute('data-theme', theme);
     this.animateTransition();
     if (persist) this.setPreference(theme);
@@ -53,7 +64,8 @@ class ThemeSwitcher {
 
   animateTransition() {
     this.root.classList.add(this.transitionClass);
-    setTimeout(() => { this.root.classList.remove(this.transitionClass); }, this.transitionMs);
+    this.body.classList.add(this.transitionClass);
+    setTimeout(() => { this.root.classList.remove(this.transitionClass); this.body.classList.remove(this.transitionClass); }, this.transitionMs);
   }
 }
 

@@ -1,0 +1,62 @@
+.theme-vintage {
+  --vintage-color-1: #3e2723;
+  --vintage-color-2: #1b5e20;
+  --vintage-color-3: #b71c1c;
+  --vintage-color-4: #f5f5dc;
+  --primary-color: var(--vintage-color-1);
+  --secondary-color: var(--vintage-color-2);
+  --accent-color: var(--vintage-color-3);
+  --background-color: var(--vintage-color-4);
+  --background-alt: #f1e8d0;
+  --text-color: #2b2b2b;
+  --muted-text-color: #5a4e46;
+  --link-color: #6a4c32;
+  --link-hover-color: #8b5e3c;
+  --header-bg: #2b1f1c;
+  --profile-border-color: #8b5e3c;
+  --nav-link-color: #c9b79c;
+  --nav-link-active-color: #2b2b2b;
+  --nav-icon-color: #a99176;
+  --section-title-color: #4a3a2e;
+  --section-highlight: #6a4c32;
+  --border-radius: 6px;
+  --box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  --font-serif-body: Georgia, "Times New Roman", serif;
+  --font-serif-title: "Times New Roman", Georgia, serif;
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --transition-base: all 0.3s ease;
+}
+
+@supports (color: var(--primary-color)) {
+  html.theme-vintage, body.theme-vintage { background-color: var(--background-color); color: var(--text-color); }
+  .theme-vintage body { font-family: var(--font-serif-body); }
+  .theme-vintage a { color: var(--link-color); transition: var(--transition-base); }
+  .theme-vintage a:hover { color: var(--link-hover-color); }
+  .theme-vintage #header { background: var(--header-bg); }
+  .theme-vintage #header .profile img { border: 6px solid var(--profile-border-color); }
+  .theme-vintage .nav-menu a, .theme-vintage .nav-menu a:focus { color: var(--nav-link-color); }
+  .theme-vintage .nav-menu a:hover, .theme-vintage .nav-menu .active, .theme-vintage .nav-menu .active:focus, .theme-vintage .nav-menu li:hover > a { color: var(--nav-link-active-color); }
+  .theme-vintage .nav-menu a i, .theme-vintage .nav-menu a:focus i { color: var(--nav-icon-color); }
+  .theme-vintage .section-bg { background: var(--background-alt); }
+  .theme-vintage .section-title h2 { color: var(--section-title-color); text-shadow: 1px 1px 0 #f1e8d0, 2px 2px 0 #c9b79c; font-family: var(--font-serif-title); font-weight: 700; font-size: 20pt; }
+  .theme-vintage .section-title h2::after { background: var(--section-highlight); }
+  .theme-vintage #hero h1 { font-family: var(--font-serif-title); font-weight: 700; font-size: 20pt; text-shadow: 1px 1px 0 #f1e8d0; }
+  .theme-vintage #hero p { font-family: var(--font-serif-body); font-size: 14pt; }
+  .theme-vintage .services .icon { background: var(--primary-color); border: 1px solid var(--primary-color); border-radius: var(--border-radius); }
+  .theme-vintage .services .icon-box:hover .icon { background: var(--background-color); }
+  .theme-vintage .services .icon-box:hover .icon i { color: var(--primary-color); }
+  .theme-vintage .portfolio .portfolio-wrap, .theme-vintage .contact .info, .theme-vintage .contact .php-email-form { border-radius: var(--border-radius); box-shadow: var(--box-shadow); }
+  .theme-vintage .decorated-border { border-width: 12px; border-style: solid; border-image-slice: 30; border-image-repeat: round; border-image-source: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="p" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M10 0 L20 10 L10 20 L0 10 Z" fill="none" stroke="%236a4c32" stroke-width="2"/></pattern></defs><rect width="100%" height="100%" fill="url(%23p)"/></svg>'); }
+  .theme-vintage .linen-bg { background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.2) 0px, rgba(255,255,255,0.2) 1px, transparent 1px, transparent 3px), repeating-linear-gradient(90deg, rgba(0,0,0,0.02) 0px, rgba(0,0,0,0.02) 1px, transparent 1px, transparent 3px); background-color: var(--background-color); }
+}
+
+@keyframes pageTurnEffect {
+  0% { transform: perspective(1200px) rotateY(0deg); opacity: 1; }
+  50% { transform: perspective(1200px) rotateY(-12deg); opacity: 0.85; }
+  100% { transform: perspective(1200px) rotateY(0deg); opacity: 1; }
+}
+
+.theme-vintage .page-turning { animation: pageTurnEffect 0.5s ease; will-change: transform, opacity; }
