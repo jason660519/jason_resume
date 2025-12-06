@@ -303,6 +303,9 @@
   let ctx
   let rafId
   let particles = []
+  let mouseMoveHandler
+  let resizeHandler
+  let lastMoveTS = 0
   const startParticles = () => {
     if (particleCanvas) return
     particleCanvas = document.createElement('canvas')
@@ -318,19 +321,58 @@
       ctx.setTransform(dpr,0,0,dpr,0,0)
     }
     resize()
-    window.addEventListener('resize', resize)
+    resizeHandler = resize
+    window.addEventListener('resize', resizeHandler)
+    const getZones = () => {
+      const z = []
+      const s = document.getElementById('styleSwitcher')
+      if (s) {
+        const r = s.getBoundingClientRect()
+        z.push({x:r.left,y:r.top,w:r.width,h:r.height})
+      }
+      // 排除右側邊欄區域，避免滑鼠軌跡殘留
+      const header = document.getElementById('header')
+      if (header) {
+        const r = header.getBoundingClientRect()
+        z.push({x:r.left,y:r.top,w:r.width,h:r.height})
+      }
+      return z
+    }
+    const inZone = (x,y) => {
+      const zs = getZones()
+      for (let i=0;i<zs.length;i++) {
+        const r = zs[i]
+        if (x>=r.x && x<=r.x+r.w && y>=r.y && y<=r.y+r.h) return true
+      }
+      return false
+    }
     const addParticle = (x,y) => {
       particles.push({x,y,vx:(Math.random()-0.5)*0.6,vy:(Math.random()-0.5)*0.6,life:1,size:2+Math.random()*2,color:Math.random()<0.5?'#00f5ff':'#ff00e4'})
       if (particles.length>160) particles.shift()
     }
-    window.addEventListener('mousemove', (e)=>{ addParticle(e.clientX,e.clientY) })
+    mouseMoveHandler = (e) => {
+      lastMoveTS = performance.now()
+      const x = e.clientX
+      const y = e.clientY
+      if (inZone(x,y)) return
+      addParticle(x,y)
+    }
+    window.addEventListener('mousemove', mouseMoveHandler)
     const step = () => {
       ctx.clearRect(0,0,particleCanvas.width,particleCanvas.height)
+      const zs = getZones()
       for (let i=0;i<particles.length;i++) {
         const p = particles[i]
         p.x += p.vx
         p.y += p.vy
-        p.life -= 0.01
+        const idle = (performance.now() - lastMoveTS) > 250
+        p.life -= idle ? 0.05 : 0.01
+        // 檢查粒子是否進入排除區域，如果是則立即移除
+        if (inZone(p.x, p.y)) {
+          particles.splice(i,1)
+          i--
+          continue
+        }
         if (p.life<=0) { particles.splice(i,1); i--; continue }
         ctx.globalAlpha = Math.max(p.life,0)
         ctx.beginPath()
@@ -339,6 +381,11 @@
         ctx.shadowColor = p.color
         ctx.shadowBlur = 8
         ctx.fill()
+      }
+      // 清除排除區域內的任何殘留視覺效果
+      for (let i=0;i<zs.length;i++) {
+        const r = zs[i]
+        ctx.clearRect(r.x,r.y,r.w,r.h)
       }
       rafId = requestAnimationFrame(step)
     }
@@ -352,6 +399,14 @@
     particleCanvas.remove()
     particleCanvas = null
     ctx = null
+    if (mouseMoveHandler) {
+      window.removeEventListener('mousemove', mouseMoveHandler)
+      mouseMoveHandler = null
+    }
+    if (resizeHandler) {
+      window.removeEventListener('resize', resizeHandler)
+      resizeHandler = null
+    }
   }
 
 })()

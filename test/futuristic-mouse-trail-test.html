@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FUTURISTIC 主題滑鼠軌跡測試</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background: #0f0f1a;
+      color: #e6e6ff;
+    }
+    
+    #test-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .test-section {
+      margin: 30px 0;
+      padding: 20px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 10px;
+    }
+    
+    h1 {
+      color: #00f5ff;
+      text-shadow: 0 0 10px rgba(0,245,255,0.7);
+    }
+    
+    h2 {
+      color: #ff00e4;
+      margin-top: 0;
+    }
+    
+    .sidebar-mock {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 300px;
+      height: 100vh;
+      background: #0a0a14;
+      border-right: 2px solid rgba(0,245,255,0.4);
+      padding: 20px;
+      overflow-y: auto;
+    }
+    
+    .content-area {
+      margin-left: 320px;
+    }
+    
+    .test-box {
+      padding: 40px;
+      margin: 20px 0;
+      background: rgba(0,245,255,0.1);
+      border: 1px solid rgba(0,245,255,0.3);
+      border-radius: 8px;
+      text-align: center;
+    }
+    
+    .status {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    
+    .status.pass {
+      background: rgba(0,255,0,0.2);
+      color: #00ff00;
+      border: 1px solid #00ff00;
+    }
+    
+    .status.fail {
+      background: rgba(255,0,0,0.2);
+      color: #ff0000;
+      border: 1px solid #ff0000;
+    }
+    
+    .instructions {
+      background: rgba(255,255,255,0.1);
+      padding: 15px;
+      border-radius: 5px;
+      margin: 15px 0;
+    }
+    
+    .instructions ol {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+    
+    .instructions li {
+      margin: 8px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar-mock" id="mockSidebar">
+    <h3 style="color: #00f5ff;">模擬右側邊欄</h3>
+    <p>這是模擬的右側邊欄區域</p>
+    <p>請在此區域移動滑鼠</p>
+    <p>檢查是否有軌跡殘留</p>
+    <div style="margin-top: 30px;">
+      <select id="testSelector" style="width: 100%; padding: 8px;">
+        <option>測試選項 1</option>
+        <option>測試選項 2</option>
+        <option>測試選項 3</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="content-area">
+    <div id="test-container">
+      <h1>🧪 FUTURISTIC 主題滑鼠軌跡修復測試</h1>
+      
+      <div class="test-section">
+        <h2>📋 測試說明</h2>
+        <div class="instructions">
+          <ol>
+            <li><strong>測試環境：</strong>確保已啟用 FUTURISTIC 主題</li>
+            <li><strong>測試步驟：</strong>
+              <ul>
+                <li>在左側邊欄區域移動滑鼠</li>
+                <li>觀察是否有粒子軌跡出現</li>
+                <li>在主內容區域移動滑鼠</li>
+                <li>觀察粒子軌跡是否正常顯示</li>
+                <li>將滑鼠從主內容區移動到邊欄</li>
+                <li>檢查軌跡是否正確消失</li>
+              </ul>
+            </li>
+            <li><strong>預期結果：</strong>
+              <ul>
+                <li>✅ 左側邊欄內不應出現粒子軌跡</li>
+                <li>✅ 主內容區域應正常顯示粒子軌跡</li>
+                <li>✅ 粒子進入邊欄區域時應立即消失</li>
+                <li>✅ 滑鼠停止移動後，所有軌跡應逐漸消失</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="test-section">
+        <h2>🎯 測試區域</h2>
+        
+        <div class="test-box">
+          <h3>主內容測試區 A</h3>
+          <p>在此區域移動滑鼠應該看到粒子軌跡效果</p>
+          <p>軌跡顏色：霓虹藍 (#00f5ff) 和 霓虹紫 (#ff00e4)</p>
+        </div>
+
+        <div class="test-box">
+          <h3>主內容測試區 B</h3>
+          <p>繼續在此區域測試滑鼠軌跡</p>
+          <p>觀察粒子的生命週期和消失效果</p>
+        </div>
+
+        <div class="test-box">
+          <h3>邊界測試區 C</h3>
+          <p>將滑鼠從此區域移動到左側邊欄</p>
+          <p>檢查粒子是否在進入邊欄時立即消失</p>
+        </div>
+      </div>
+
+      <div class="test-section">
+        <h2>✅ 修復內容摘要</h2>
+        <div class="instructions">
+          <h3>問題診斷：</h3>
+          <p>原始程式碼中的 <code>getZones()</code> 函數只排除了 <code>styleSwitcher</code> 元素，沒有排除右側邊欄 (<code>#header</code>)，導致滑鼠在邊欄區域移動時仍會產生粒子軌跡。</p>
+          
+          <h3>修復方案：</h3>
+          <ol>
+            <li><strong>擴展排除區域：</strong>在 <code>getZones()</code> 函數中添加 <code>#header</code> 元素的邊界矩形</li>
+            <li><strong>增強粒子清除邏輯：</strong>在動畫循環中檢查每個粒子的位置，如果粒子進入排除區域則立即移除</li>
+            <li><strong>保持清除機制：</strong>維持原有的 <code>clearRect</code> 機制，確保排除區域內的視覺效果被清除</li>
+          </ol>
+          
+          <h3>程式碼變更：</h3>
+          <ul>
+            <li>檔案：<code>assets/js/main.js</code></li>
+            <li>修改函數：<code>getZones()</code> 和 <code>step()</code></li>
+            <li>新增邏輯：粒子位置檢測和即時移除機制</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="test-section">
+        <h2>🔍 驗證檢查清單</h2>
+        <div class="instructions">
+          <p><input type="checkbox" id="check1"> 左側邊欄內無粒子軌跡</p>
+          <p><input type="checkbox" id="check2"> 主內容區域粒子軌跡正常</p>
+          <p><input type="checkbox" id="check3"> 粒子進入邊欄時立即消失</p>
+          <p><input type="checkbox" id="check4"> 滑鼠停止後軌跡正確消失</p>
+          <p><input type="checkbox" id="check5"> 其他主題功能不受影響</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 簡單的測試狀態追蹤
+    document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+        const allChecked = Array.from(document.querySelectorAll('input[type="checkbox"]')).every(cb => cb.checked);
+        if (allChecked) {
+          alert('✅ 所有測試項目已完成！修復驗證成功！');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
